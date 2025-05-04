@@ -36,7 +36,7 @@ const Header = () => {
                         to="/emotion-search"
                         className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}
                     >
-                        Mood Search
+                        Check Mood
                     </NavLink>
                  </nav>
             </div>
