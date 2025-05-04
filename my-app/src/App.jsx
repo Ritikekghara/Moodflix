@@ -1,36 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Browse from './pages/Browse/Browse';
+import EmotionSearch from './pages/EmotionSearch/EmotionSearch';
+import MovieDetail from './pages/MovieDetail/MovieDetail';
+import './index.css'; // Import global styles
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-        {/* test */}
-      </p>
-    </>
-  )
+    return (
+        <Router>
+            <Header />
+            <main> {/* Wrap routes in main for semantics */}
+                <Routes>
+                    <Route path="/" element={<Browse />} />
+                    <Route path="/emotion-search" element={<EmotionSearch />} />
+                    <Route path="/movie/:movieId" element={<MovieDetail />} />
+                    {/* Add other routes here later (e.g., Movie Details, Profile) */}
+                    <Route path="*" element={<Browse />} /> {/* Fallback to Browse */}
+                </Routes>
+            </main>
+        </Router>
+    );
 }
 
-export default App
+export default App;

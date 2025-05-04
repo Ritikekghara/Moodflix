@@ -1,0 +1,58 @@
+
+
+.card {
+    /* Remove transform and cursor from card itself if applied to link */
+     /* transform: scale(1.05); */
+     /* cursor: pointer; */
+     width: 100%; /* Ensure card fills the link wrapper */
+     background-color: #222;
+     border-radius: 4px;
+     overflow: hidden;
+     /* Remove margin-right if using grid gap */
+     /* margin-right: 10px; */
+     /* Remove flex-shrink if using grid */
+     /* flex-shrink: 0; */
+      /* Adjust min/max width as needed for grid, or let grid control it */
+}
+
+ .card.noLink { /* Style for cards without an ID/Link */
+     cursor: default;
+ }
+
+.poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background-color: #333;
+}
+
+/* Optional title styling */
+/*
+.title {
+    color: white;
+    font-size: 0.9rem;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+*/
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        min-width: 120px;
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        min-width: 100px;
+        max-width: 130px;
+    }
+}

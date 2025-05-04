@@ -1,0 +1,101 @@
+.listContainer {
+    margin-bottom: 2rem;
+    padding: 0 2rem; /* Keep container padding */
+}
+
+.title {
+    color: #e5e5e5;
+    font-size: 1.4rem;
+    margin-bottom: 1rem; /* More space below title */
+    font-weight: bold;
+}
+
+/* Change movieRow from flex to grid */
+.movieRow {
+    display: grid;
+    /* Responsive grid columns:
+       - Try to fit columns with a min width of ~160px.
+       - Let them grow equally (1fr) to fill the space.
+       - Creates ~3 columns on medium screens, adjusts automatically.
+    */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem; /* Spacing between grid items (replaces margin on card) */
+
+    /* Remove old flexbox horizontal scroll styles */
+    /* overflow-x: auto; */
+    /* overflow-y: hidden; */
+    /* padding-bottom: 1rem; */
+    /* scrollbar-width: none; */
+    /* -ms-overflow-style: none; */
+}
+/* Remove scrollbar hiding rule */
+/* .movieRow::-webkit-scrollbar { display: none; } */
+
+
+.noMovies {
+    color: #aaa;
+    font-style: italic;
+    padding: 1rem 0; /* Add some padding */
+}
+
+/* Add these styles to MovieList.module.css */
+
+/* ... (keep existing styles for listContainer, title, movieRow, noMovies) ... */
+
+.toggleButtonContainer {
+    text-align: center; /* Center the button */
+    margin-top: 1rem; /* Space above the button */
+}
+
+.toggleButton {
+    background-color: rgba(100, 100, 100, 0.5); /* Semi-transparent grey */
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.toggleButton:hover {
+    background-color: rgba(130, 130, 130, 0.7); /* Lighter grey on hover */
+}
+
+.toggleButton:active {
+    transform: scale(0.98);
+}
+
+/* Ensure grid layout adapts */
+.movieRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    /* Add transition for potential height changes (optional, might be jumpy with grid) */
+    /* transition: max-height 0.5s ease-in-out; */
+    /* overflow: hidden; */ /* Needed if using max-height transition */
+}
+
+/* Optional: If using max-height transition (can be complex with grid) */
+/* .movieRow.collapsed {
+    max-height: 350px; /* Estimate height for one row - adjust! */
+/* } */
+/* .movieRow.expanded {
+    max-height: 2000px; /* Large enough value */
+/* } */
+
+
+/* Responsive adjustments for grid */
+@media (max-width: 768px) {
+    .movieRow {
+         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+         gap: 0.8rem;
+    }
+}
+@media (max-width: 480px) {
+     .movieRow {
+         grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+         gap: 0.6rem;
+    }
+}
