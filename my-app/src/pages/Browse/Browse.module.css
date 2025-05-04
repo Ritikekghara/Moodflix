@@ -1,0 +1,22 @@
+.browseContainer {
+    padding-top: 1rem; /* Space below sticky header */
+}
+
+.message {
+    color: #e5e5e5;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 3rem;
+}
+
+.error {
+    color: #f40612; /* Red for errors */
+}
+
+/* Add to Browse.module.css */
+.partialError {
+    text-align: center;
+    color: #ffcc00; /* Warning yellow */
+    margin-top: 2rem;
+    font-style: italic;
+}

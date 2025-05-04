@@ -1,0 +1,7 @@
+.searchContainer {
+    padding-top: 1rem; /* Space below sticky header */
+    min-height: calc(100vh - 100px); /* Adjust based on header height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the detector component */
+}

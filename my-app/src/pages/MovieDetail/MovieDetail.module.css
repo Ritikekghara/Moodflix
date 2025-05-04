@@ -1,0 +1,163 @@
+.detailContainer {
+    position: relative;
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 4rem 2rem; /* Add padding */
+    display: flex; /* Use flex for alignment */
+    align-items: center; /* Vertically center content slightly */
+    justify-content: center; /* Horizontally center content */
+    color: #fff;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent overlay */
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* Stack poster and info on small screens */
+    align-items: center; /* Center items when stacked */
+    gap: 2rem;
+    max-width: 1000px; /* Max width for content */
+    width: 100%;
+    background-color: rgba(20, 20, 20, 0.8); /* Slightly transparent card BG */
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* Add or update button styles in MovieDetail.module.css */
+
+/* Base Button Style (can be shared or defined globally later) */
+.button {
+    display: inline-block; /* Allow margin/padding */
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px; /* Slightly rounded */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    background-color: #e50914; /* Moodflix Red */
+    color: white;
+    margin-top: 1rem; /* Space above the button */
+    margin-right: 1rem; /* Space between buttons if more are added */
+}
+
+.button:hover:not(:disabled) {
+    background-color: #f40612; /* Brighter red on hover */
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.98); /* Slight shrink on click */
+}
+
+.button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Specific style for Watch Now */
+.watchButton {
+    /* Add specific overrides if needed, e.g., bigger size */
+     font-size: 1.1rem; 
+     padding: 1rem 2rem; 
+}
+
+
+.poster {
+    max-width: 250px; /* Limit poster size */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0; /* Prevent poster from shrinking too much */
+}
+
+.info {
+    flex-grow: 1; /* Allow info section to take remaining space */
+    text-align: left; /* Align text left */
+}
+
+ .info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #fff; /* Ensure title is white */
+}
+
+.tagline {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.info h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.3rem;
+}
+
+ .genres {
+    margin-bottom: 1rem;
+}
+
+.genre {
+    display: inline-block;
+    background-color: #333;
+    color: #ccc;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.loading, .error, .notFound {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.error {
+    color: #e50914;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+     .content {
+        flex-direction: row; /* Side-by-side layout on larger screens */
+        align-items: flex-start; /* Align items to top */
+     }
+     .info {
+         text-align: left;
+     }
+}
+
+ @media (max-width: 600px) {
+     .info h1 {
+         font-size: 1.8rem;
+     }
+      .poster {
+         max-width: 180px;
+     }
+     .detailContainer {
+        padding: 2rem 1rem;
+     }
+     .content {
+        padding: 1.5rem;
+     }
+ }

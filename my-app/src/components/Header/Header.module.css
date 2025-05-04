@@ -1,0 +1,101 @@
+.header {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Push nav to the right */
+    padding: 0.8rem 2rem; /* Adjust padding */
+    background-color: #141414;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make it span the full viewport width */
+    height: 70px; /* Keep the fixed height */
+    z-index: 1000;
+}
+
+/* Absolute positioning for the logo */
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Precise centering */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e50914;
+    text-decoration: none;
+    /* Remove margin-right */
+    /* margin-right: 1rem; */
+}
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+    /* Push nav to the far right, remove if using justify-content: space-between */
+    /* margin-left: auto; */
+    margin-left: auto; /* Pushes nav to the right */
+    padding-right: 2rem;
+}
+
+/* Add a placeholder on the left to balance the nav visually */
+/* You might need this if you want to ensure the logo isn't overlapped */
+.leftPlaceholder {
+    flex-basis: 150px; 
+    flex-shrink: 0;
+} 
+
+.navLink {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink.active {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    .header {
+        padding: 0.8rem 1rem;
+    }
+    .nav {
+        gap: 1rem;
+        padding-right: 1rem;
+    }
+    .navLink {
+       font-size: 0.9rem;
+    }
+    .leftPlaceholder {
+        flex-basis: 100px; /* Adjust responsive placeholder */
+    }
+}
+
+@media (max-width: 480px) {
+     .logo {
+        font-size: 1.3rem;
+        /* Maybe remove absolute centering on smallest screens */
+        /* position: static; */
+        /* transform: none; */
+    }
+    /* Adjust layout if logo is not centered */
+    /* .header { justify-content: flex-start; } */
+    .nav {
+        gap: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .navLink {
+        font-size: 0.8rem;
+    }
+     .header {
+        padding: 0.5rem;
+    }
+    .leftPlaceholder {
+        display: none; /* Hide placeholder on smallest screens */
+    }
+}
