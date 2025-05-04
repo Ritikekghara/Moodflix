@@ -11,6 +11,60 @@ if (!TMDB_API_KEY) {
 
 
 
+
+
+// src/services/movieApi.js
+// ... (keep existing imports and constants: axios, TMDB_API_KEY, TMDB_API_URL, TMDB_IMAGE_BASE_URL) ...
+
+/**
+ * Searches for movies on TMDB based on a query string.
+ * Note: This primarily searches movie titles and keywords.
+ * It may not effectively find movies if you type only a genre name.
+ * @param {string} query - The search term entered by the user.
+ * @returns {Promise<Array<object>>} A promise resolving with an array of matching movie objects.
+ * @throws {Error} If fetching fails.
+ */
+export const searchMovies = async (query) => {
+    if (!TMDB_API_KEY) throw new Error("TMDB API Key is missing.");
+    if (!query || query.trim() === "") throw new Error("Search query cannot be empty.");
+
+    console.log(`Searching TMDB for query: ${query}`);
+    try {
+        const response = await axios.get(`${TMDB_API_URL}/search/movie`, {
+            params: {
+                api_key: TMDB_API_KEY,
+                query: query.trim(), // Send the trimmed query
+                include_adult: false,
+                page: 1 // Fetch the first page of results
+            },
+        });
+
+        if (response.data?.results) {
+            return response.data.results.map(movie => ({
+                id: movie.id,
+                title: movie.title,
+                posterUrl: movie.poster_path ? `${TMDB_IMAGE_BASE_URL}${movie.poster_path}` : '/placeholder.png',
+                // Add release year if needed for display
+                release_year: movie.release_date ? movie.release_date.substring(0, 4) : null,
+            }));
+        } else {
+            return []; // Return empty array if no results
+        }
+    } catch (error) {
+        console.error(`Error searching movies for query "${query}":`, error);
+        if (error.response) {
+            throw new Error(`Failed to search movies: ${error.response.data?.status_message || error.message}`);
+        } else {
+            throw new Error(`Failed to search movies: ${error.message}`);
+        }
+    }
+};
+
+
+
+
+
+
 /**
  * Fetches movies from TMDB for a specific genre ID.
  * @param {number} genreId - The TMDB ID of the genre.

@@ -1,0 +1,32 @@
+.searchContainer {
+    padding: 2rem; /* Add padding around the results */
+    min-height: calc(100vh - 70px - 4rem); /* Full height minus header and padding */
+}
+
+.title {
+    color: #e5e5e5;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center; /* Center the title */
+    font-weight: bold;
+}
+
+.message {
+    color: #ccc;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 3rem 0;
+}
+
+.error {
+    color: #e50914; /* Moodflix Red for errors */
+}
+
+/* Ensure MovieList within SearchResult page looks good */
+/* No extra styles needed if MovieList styles are self-contained */
+/* However, you might want to remove listContainer padding if SearchContainer has enough */
+/* Inside MovieList.module.css, you could conditionally remove padding */
+/* Or override here: */
+/* .searchContainer :global(.listContainer) {
+    padding: 0;
+} */
