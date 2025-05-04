@@ -1,15 +1,16 @@
 .header {
     display: flex;
-    align-items: center; /* Vertically align items */
-    justify-content: space-between; /* Push nav to the right */
-    padding: 0.8rem 2rem; /* Adjust padding */
+    align-items: center;
+    /* Use space-between to push left/right content to edges */
+    justify-content: space-between;
+    padding: 0 2rem; /* Adjust horizontal padding */
     background-color: #141414;
     color: white;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Make it span the full viewport width */
-    height: 70px; /* Keep the fixed height */
+    width: 100%;
+    height: 70px;
     z-index: 1000;
 }
 
@@ -17,14 +18,12 @@
 .logo {
     position: absolute;
     left: 50%;
-    top: 50%; /* Center vertically */
-    transform: translate(-50%, -50%); /* Precise centering */
+    top: 50%;
+    transform: translate(-50%, -50%);
     font-size: 1.8rem;
     font-weight: bold;
     color: #e50914;
     text-decoration: none;
-    /* Remove margin-right */
-    /* margin-right: 1rem; */
 }
 
 .nav {
@@ -32,8 +31,7 @@
     gap: 1.5rem;
     /* Push nav to the far right, remove if using justify-content: space-between */
     /* margin-left: auto; */
-    margin-left: auto; /* Pushes nav to the right */
-    padding-right: 2rem;
+   
 }
 
 /* Add a placeholder on the left to balance the nav visually */
@@ -56,46 +54,99 @@
     font-weight: bold;
 }
 
+.rightContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between search and potential future icons */
+}
+
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly visible background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden; /* Clip button corners */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.searchForm:focus-within { /* Highlight when input is focused */
+     background-color: rgba(255, 255, 255, 0.2);
+     border-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.searchInput {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+    min-width: 150px; /* Give it some base width */
+    width: 10vw; /* Allow it to grow slightly with viewport */
+    max-width: 250px; /* But not too large */
+    transition: width 0.3s ease;
+}
+.searchInput::placeholder {
+    color: #aaa;
+}
+
+
+.searchButton {
+    background: none; /* Transparent background */
+    border: none;
+    color: #ccc; /* Icon color */
+    padding: 0 0.8rem; /* Padding around icon */
+    cursor: pointer;
+    display: flex; /* Center icon */
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Match input height */
+    transition: color 0.3s ease;
+}
+.searchButton:hover {
+    color: #fff; /* Brighter icon on hover */
+}
+
 /* Responsive adjustments */
+@media (max-width: 900px) {
+    .searchInput {
+         min-width: 120px;
+         width: 15vw;
+    }
+     .logo { font-size: 1.6rem; }
+     .navLink { font-size: 0.9rem; }
+}
+
 @media (max-width: 768px) {
-    .logo {
-        font-size: 1.5rem;
-    }
-    .header {
-        padding: 0.8rem 1rem;
-    }
-    .nav {
-        gap: 1rem;
-        padding-right: 1rem;
-    }
-    .navLink {
-       font-size: 0.9rem;
-    }
-    .leftPlaceholder {
-        flex-basis: 100px; /* Adjust responsive placeholder */
-    }
+     .header { padding: 0 1rem; }
+     .logo { font-size: 1.5rem; }
+     .nav { gap: 1rem; }
+     .navLink { font-size: 0.9rem; }
+     .searchInput {
+         min-width: 40px; /* Almost just the icon */
+         width: 40px;
+         padding: 0.5rem;
+         padding-left: 0.8rem; /* Keep some space for text */
+         transition: width 0.3s ease;
+     }
+     .searchInput:focus { /* Expand significantly on focus on small screens */
+         width: 180px;
+         min-width: 180px;
+     }
+      .searchForm {
+         background-color: transparent; /* Hide background until focused */
+         border: none;
+     }
+      .searchForm:focus-within {
+         background-color: rgba(0, 0, 0, 0.5);
+         border: 1px solid rgba(255, 255, 255, 0.3);
+      }
 }
 
 @media (max-width: 480px) {
-     .logo {
-        font-size: 1.3rem;
-        /* Maybe remove absolute centering on smallest screens */
-        /* position: static; */
-        /* transform: none; */
-    }
-    /* Adjust layout if logo is not centered */
-    /* .header { justify-content: flex-start; } */
-    .nav {
-        gap: 0.5rem;
-        padding-right: 0.5rem;
-    }
-    .navLink {
-        font-size: 0.8rem;
-    }
-     .header {
-        padding: 0.5rem;
-    }
-    .leftPlaceholder {
-        display: none; /* Hide placeholder on smallest screens */
-    }
+     /* Further adjustments if needed, maybe hide nav text */
+     .logo { font-size: 1.3rem; }
+     
 }
