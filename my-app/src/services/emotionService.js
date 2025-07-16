@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // URL of your Flask backend API
-const BACKEND_URL = 'https://emotion-backend-q88o.onrender.com'; // Ensure this matches your running backend
+const BACKEND_URL = 'http://127.0.0.1:5000/predict'; // Ensure this matches your running backend
 
 /**
  * Sends an image blob to the backend for emotion detection using Axios.
